@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="display-4">Sign Up</h1>
+        <div class="alert alert-info my-2" *ngIf="showSuccesMessage">
+            submitted sccessfully.
+         </div>
+        <form [formGroup]="this.customerService.form" (ngSubmit)="onSubmit()">
+          <input type="hidden" formControlName="$key">
+          <div class="form-group">
+              <label for="userName">User name</label>
+              <input type="text" formControlName="userName" class="form-control" id="userName" placeholder="User Name" [ngClass]="{'is-invalid':submitted && formControls.userName.errors}">
+              <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.userName.errors">User Name is Requierd</div>
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Name" [ngClass]="{'is-invalid':submitted && formControls.name.errors}">
+            <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.name.errors">Name is Requierd</div>
+          </div>
+          <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" placeholder="Email" [ngClass]="{'is-invalid':submitted && formControls.email.errors}">
+              <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.email.errors">Email is Requierd</div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" formControlName="password" class="form-control"  id="exampleInputPassword1" placeholder="Password" [ngClass]="{'is-invalid':submitted && formControls.password.errors}">
+            <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.password.errors">
+                <div *ngIf="formControls.password.errors.required">Password is Requierd</div>
+                <div *ngIf="formControls.password.errors.minlength">min {{ formControls.password.errors.minlength.requiredLength }} characters and which should be a combination alphanumeric</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="number" formControlName="mobile" class="form-control" id="mobile" placeholder="Mobile Number" [ngClass]="{'is-invalid':submitted && formControls.mobile.errors}">
+              <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.mobile.errors">
+                  <div *ngIf="formControls.mobile.errors.required">Mobile Number is Requierd</div>
+                  <div *ngIf="formControls.mobile.errors.minlength">min {{ formControls.mobile.errors.minlength.requiredLength }}</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="address">Address</label>
+              <textarea type="text" class="form-control" formControlName="address" id="address" [ngClass]="{'is-invalid':submitted && formControls.address.errors}"></textarea>
+              <div class="invalid-feedback" role="alert" *ngIf="submitted && formControls.address.errors">
+                  <div *ngIf="formControls.address.errors.required">Password is Requierd</div>
+                  <div *ngIf="formControls.address.errors.minlength">should be less than {{ formControls.address.errors.minlength.requiredLength }} characters</div>
+              </div>
+          </div>
+          <input type="submit" class="btn btn-outline-success" value="Submit">
+        </form>
+    </div>
+  </div>
+</div>
